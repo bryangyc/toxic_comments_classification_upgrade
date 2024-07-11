@@ -1,8 +1,6 @@
 # Toxic comments severity
 
-## Team Member : Bryan Goh Ying Chung | Daniel Lim Yuan Lee | Ng Tow Boon | Ong Wee Chong, Alex
-
-### Mini-Project for Assessing Toxicity of Online comments
+### Assessing Toxicity of Online comments
 
 
 ## Requirements
@@ -19,11 +17,11 @@
 
 https://www.kaggle.com/datasets/shivamb/combined-jigsaw-comments-corpus
 
-- This project predict the toxic severity of a given input, training on dataset of 2 million movie comments.  
+- This project predict the toxic severity of a given input, trained on a dataset of 2 million movie comments.  
 
 - Goal is to predict score of toxic_comments_severity from 0 (a little toxic) to 1 (toxic)
 
-- Project will be using Gradio from Demo purpose, key in any sentence, model will predict the severity of toxic.
+- Gradio will be used to showcase the model, by  keying in any sentence, a predictation of the severity of toxicity will be shown.
 
 - Model: https://huggingface.co/martin-ha/toxic-comment-model
 
