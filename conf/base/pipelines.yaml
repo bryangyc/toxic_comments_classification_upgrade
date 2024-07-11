@@ -1,0 +1,15 @@
+process_data:
+  raw_data_dir_path: "./data/raw/"
+  processed_data_dir_path: "./data/processed/"
+
+train_model:
+  mlflow_exp_name: "toxic_comments_severity"
+  data_dir_path: "./data/processed/"
+  train_dataset: "./data/processed/train.pkl"
+  test_dataset: "./data/processed/test.pkl"
+  text_col: "comment_text"
+  no_cuda: true
+  no_mps: true
+  # model_type: "fine_tuned"
+  model_type: "fine_tuned_pre_train"
+  sample_size: 1000

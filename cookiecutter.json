@@ -1,0 +1,14 @@
+{
+    "cookiecutter": {
+        "project_name": "toxic comments severity",
+        "description": "Mini-Project for KKH",
+        "repo_name": "toxic-comments-severity",
+        "src_package_name": "toxic_comments_severity",
+        "src_package_name_short": "toxic_comments_severity",
+        "platform": "onprem",
+        "orchestrator": "runai",
+        "proj_name": "toxic-comments",
+        "registry_project_path": "registry.aisingapore.net/aiap-15-dsp/toxic",
+        "author_name": "KKH"
+    }
+}

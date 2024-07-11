@@ -1,0 +1,42 @@
+apiVersion: run.ai/v2alpha1
+kind: TrainingWorkload
+metadata:
+  name: KKH-workspace-prep
+  namespace: runai-toxic-comments
+spec:
+  environment:
+    items:
+      WORKSPACE_NAME:
+        value: KKH 
+  name:
+    value: KKH-workspace-prep
+  image:
+    value: alpine
+  imagePullPolicy:
+    value: IfNotPresent
+  command:
+    value: >-
+      /bin/sh -c "mkdir -p workspaces/$WORKSPACE_NAME &&
+      cd workspaces/$WORKSPACE_NAME &&
+      chown -R 2222:2222 .;"
+  workingDir:
+    value: /toxic-comments-pvc
+  cpu:
+    value: '0.5'
+  cpuLimit:
+    value: '0.5'
+  memory:
+    value: 1G
+  memoryLimit:
+    value: 1G
+  pvcs:
+    items:
+      pvc-toxic-comments-pvc:
+        value:
+          claimName: toxic-comments-pvc
+          existingPvc: true
+          path: /toxic-comments-pvc
+          readOnly: false
+          readWriteMany: true
+  username:
+    value: KKH 

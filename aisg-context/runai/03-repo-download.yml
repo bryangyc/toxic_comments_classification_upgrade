@@ -1,0 +1,50 @@
+apiVersion: run.ai/v2alpha1
+kind: TrainingWorkload
+metadata:
+  name: KKH-repo-download
+  namespace: runai-toxic-comments
+spec:
+  environment:
+    items:
+      GITLAB_USERNAME:
+        value: SECRET:gitlab-ro-credentials,username
+      GITLAB_PASSWORD:
+        value: SECRET:gitlab-ro-credentials,password
+      GITLAB_URL:
+        value: SECRET:gitlab-ro-credentials,url
+  name:
+    value: KKH-repo-download
+  image:
+    value: alpine/git
+  imagePullPolicy:
+    value: IfNotPresent
+  command:
+    value: >-
+      /bin/sh -c 
+      "git clone https://$GITLAB_USERNAME:$GITLAB_PASSWORD@$GITLAB_URL.git &&
+      chown -R 2222:2222 toxic-comments-severity"
+  runAsUid:
+    value: 2222
+  runAsGid:
+    value: 2222
+  workingDir:
+    value: /toxic-comments-pvc/workspaces/KKH
+  cpu:
+    value: '0.5'
+  cpuLimit:
+    value: '0.5'
+  memory:
+    value: 1G
+  memoryLimit:
+    value: 1G
+  pvcs:
+    items:
+      pvc-toxic-comments-pvc:
+        value: 
+          claimName: toxic-comments-pvc
+          existingPvc: true
+          path: /toxic-comments-pvc
+          readOnly: false
+          readWriteMany: true
+  username:
+    value: KKH 
